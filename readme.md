@@ -21,7 +21,7 @@ Vue (pronounced /vjuː/, like view) is a progressive framework for building user
 DB_DATABASE=task-vue
 DB_USERNAME=root
 DB_PASSWORD=
-</br>
+<br>
 3. Run "npm install"
 4. Run "npm run watch"
 5. Open a second terminal and run "php artisan serve"
