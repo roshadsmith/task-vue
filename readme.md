@@ -17,11 +17,11 @@ Vue (pronounced /vjuː/, like view) is a progressive framework for building user
 
 1. Clone repository
 2. Setup you database - ammend the ".env" file with the following:
-<br>
+...
 DB_DATABASE=task-vue
 DB_USERNAME=root
 DB_PASSWORD=
-<br>
+...
 3. Run "npm install"
 4. Run "npm run watch"
 5. Open a second terminal and run "php artisan serve"
