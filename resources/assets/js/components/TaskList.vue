@@ -78,7 +78,6 @@ export default {
         };
     },
     created() {
-        // this.fetchAllTasks();
         this.getTasks();
     },
     methods: {
@@ -92,33 +91,13 @@ export default {
                 console.log(JSON.stringify(error));
             });
         },
-        fetchIncompletedTasks(){
-            axios.get('incompletedtasks').then(response => {
-                this.incompletedTasks = response.data;
-            })
-            .catch (error => {
-                console.log(JSON.stringify(error));
-            });
-        },
-        fetchCompletedTasks(){
-            axios.get('completedtasks').then(response => {
-                this.completedTasks = response.data;
-            })
-            .catch (error => {
-                console.log(JSON.stringify(error));
-            });
-        },
-        fetchAllTasks(){
-            this.fetchIncompletedTasks();
-            this.fetchCompletedTasks();
-        },
         addNewTask(){
             axios.post('store', {
                     task: this.newTask.task
                 })
             .then(response => {
                 this.newTask.task='';
-                this.fetchAllTasks();
+                this.getTasks();
                 toastr.options.closeButton = true;
                 toastr.success('Your Task was Successfull Added');
             })
@@ -132,7 +111,7 @@ export default {
                 })
             .then(response => {
                 this.uTask.task = '';
-                this.fetchAllTasks();
+                this.getTasks();
                 toastr.options.closeButton = true;
                 toastr.success('Your Task was Updated');
             })
@@ -143,7 +122,7 @@ export default {
         deleteTask(task){
             axios.get('/remove/' + task.id)
             .then(response => {
-                this.fetchAllTasks();
+                this.getTasks();
                 toastr.options.closeButton = true;
                 toastr.error('Your Task was Removed');
             })
@@ -155,7 +134,7 @@ export default {
             if (task.completed == false){
                 axios.get('/completed/' + task.id)
                 .then(response => {
-                    this.fetchAllTasks();
+                    this.getTasks();
                     toastr.options.closeButton = true;
                     toastr.success('Your Task is Completed');
                 })
@@ -166,7 +145,7 @@ export default {
             else {
                 axios.get('/completed/' + task.id)
                 .then(response => {
-                    this.fetchAllTasks();
+                    this.getTasks();
                     toastr.options.closeButton = true;
                     toastr.success('Your Task was updated to incomplete');
                 })

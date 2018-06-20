@@ -66,30 +66,6 @@ class TaskController extends Controller
      * @param  \App\Task  $task
      * @return \Illuminate\Http\Response
      */
-    public function showincompleted(Task $task)
-    {
-        // return Task::latest()->get();
-        return Task::orderBy('id', 'DESC')->where('completed', false)->get();
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
-    public function showcompleted(Task $task)
-    {
-        return Task::orderBy('id', 'DESC')->where('completed', true)->get();
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Task  $task
-     * @return \Illuminate\Http\Response
-     */
     public function update($id)
     {
         $task = Task::find($id);

@@ -16,16 +16,6 @@ Route::get('/', [
     'as' => 'home'
 ]);
 
-Route::get('/incompletedtasks', [
-    'uses' => 'TaskController@showincompleted',
-    'as' => 'incompletedtasks'
-]);
-
-Route::get('/completedtasks', [
-    'uses' => 'TaskController@showcompleted',
-    'as' => 'completedtasks'
-]);
-
 Route::get('/tasks', [
     'uses' => 'TaskController@getTasks',
     'as' => 'tasks'
